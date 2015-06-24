@@ -60,16 +60,16 @@ static const Layout layouts[] = {
 static const Tag tags[] = {
     /* name     layout          mfact   nmaster */
     { "main",   &layouts[2],    -1,     -1 },
-    { "fterm",   &layouts[1],    -1,     -1 },
-    { "doc",    &layouts[0],    -1,     -1 },
     { "dev",   &layouts[0],    -1,     -1 },
+    { "droid",   &layouts[0],    -1,     -1 },
+    { "doc",    &layouts[0],    -1,     -1 },
     { "chat",   &layouts[0],    -1,     -1 },
     { "mail",   &layouts[2],    -1,     -1 },
-    { "media",  &layouts[0],    -1,     -1 },
     { "file",   &layouts[0],    -1,     -1 },
+    { "fterm",   &layouts[1],    -1,     -1 },
     { "web",    &layouts[1],    -1,     -1 },
     { "vbox",   &layouts[0],    -1,     -1 },
-    { "droid",   &layouts[0],    -1,     -1 },
+    { "media",  &layouts[0],    -1,     -1 },
 };
 
 static const Rule rules[] = {
@@ -79,22 +79,24 @@ static const Rule rules[] = {
      */
     /* class                instance    title       tags mask       isfloating      iscentred       monitor */
     { "Qterm",              NULL,       NULL,       1 << 1,         False,          False,          -1 },
-    { "Zathura",            NULL,       NULL,       1 << 2,         False,          False,          -1 },
-    { "GVim",               NULL,       NULL,       1 << 3,         False,          False,          -1 },
-    { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
+    { "GVim",               NULL,       NULL,       1 << 2,         False,          False,          -1 },
+    { "WebStorm",               NULL,       NULL,       1 << 2,         False,          False,          -1 },
+    { "Android",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
+    { "Zathura",            NULL,       NULL,       1 << 4,         False,          False,          -1 },
+    { "Skype",              NULL,       NULL,       1 << 5,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 6,         False,          False,          -1 },
-    { "VLC",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
-    { "Chrome",             NULL,       "Chrome",   1 << 6,         False,          False,          -1 },
-    { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
+    { "Chrome",             NULL,       "Chrome",   1 << 8,         False,          False,          -1 },
+    { "Feh",                NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 7,         False,          False,          -1 },
-    { "virtualbox",         NULL,      "VirtualBox",1 << 9,         False,          False,          -1 },
-    { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
+    { "Firefox",            NULL,       NULL,       1 << 9,         False,          False,          -1 },
+    { "virtualbox",         NULL,      "VirtualBox",1 << 10,         False,          False,          -1 },
+    { "VLC",                NULL,       NULL,       1 << 11,         False,          False,          -1 },
 };
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenu[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
-static const char *webb[] = { "chromium", "--incognito", "Chrome" };
+static const char *chrom[] = { "chromium", "--incognito", "Chrome" };
 static const char *chat[] = { "skype", NULL, "Skype" };
 static const char *term[] = { "urxvtc", NULL };
 //static const char *edit[] = { "geany", NULL, "Geany" };
@@ -111,11 +113,15 @@ static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volu[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *vold[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *vbox[] = { "virtualbox",  NULL, "VirtualBox" };
+static const char *studio[] = { "studio.sh",  NULL, "Android" };
+static const char *wstorm[] = { "webstorm.sh",  NULL, "WebStorm" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
     { MONKEY,           XK_p,       spawn,          {.v = dmenu } },
-    { MONKEY,           XK_w,       runorraise,     {.v = webb } },
+    { MONKEY,           XK_a,       spawn,          {.v = studio } },
+    { MONKEY,           XK_w,       spawn,          {.v = wstorm } },
+    { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  runorraise,     {.v = term } },
     { MONKEY,           XK_Return,  runorraise,     {.v = term } },
@@ -175,7 +181,7 @@ static Key keys[] = {
 /* button definitions */
 /* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-    /* click                event mask      button          function        argument */
+    /* click            event mask  button          function        argument */
     { ClkLtSymbol,      0,          Button1,        setlayout,      {0} },
     { ClkLtSymbol,      0,          Button3,        setlayout,      {.v = &layouts[2]} },
     { ClkWinTitle,      0,          Button2,        zoom,           {0} },
