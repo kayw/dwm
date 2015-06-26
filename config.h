@@ -19,9 +19,9 @@ static const Bool showsystray = True;           /* false means no systray */
 static const char colors[NUMCOLORS][ColLast][13] = {
     /* border    fg         bg */
     { "#2D2D2D", "#FFFFFF", "#2D2D2D" },        /* 01 - regular */
-    { "#D64937", "#FFFFFF", "#2D2D2D" },        /* 02 - selected */
+    { "#D64937", "#FFFFFF", "#D64937" },        /* 02 - selected */
     { "#2D2D2D", "#FF0000", "#2D2D2D" },        /* 03 - urgent */
-    { "#2D2D2D", "#666666", "#2D2D2D" },        /* 04 - occupied */
+    { "#2D2D2D", "#FFFFFF", "#349147" },        /* 04 - occupied green */
     { "#2D2D2D", "#A82222", "#2D2D2D" },        /* 05 - red */
     { "#2D2D2D", "#1F7B94", "#2D2D2D" },        /* 06 - blue */
     { "#2D2D2D", "#349147", "#2D2D2D" },        /* 07 - green */
@@ -78,25 +78,25 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class                instance    title       tags mask       isfloating      iscentred       monitor */
-    { "Qterm",              NULL,       NULL,       1 << 1,         False,          False,          -1 },
-    { "GVim",               NULL,       NULL,       1 << 2,         False,          False,          -1 },
-    { "WebStorm",               NULL,       NULL,       1 << 2,         False,          False,          -1 },
-    { "Android",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
-    { "Zathura",            NULL,       NULL,       1 << 4,         False,          False,          -1 },
-    { "Skype",              NULL,       NULL,       1 << 5,         False,          False,          -1 },
-    { "Mutt",               NULL,       "Mutt",     1 << 6,         False,          False,          -1 },
-    { "Chrome",             NULL,       "Chrome",   1 << 8,         False,          False,          -1 },
-    { "Feh",                NULL,       NULL,       1 << 7,         False,          False,          -1 },
-    { "Pcmanfm",            NULL,       NULL,       1 << 7,         False,          False,          -1 },
-    { "Firefox",            NULL,       NULL,       1 << 9,         False,          False,          -1 },
-    { "virtualbox",         NULL,      "VirtualBox",1 << 10,         False,          False,          -1 },
-    { "VLC",                NULL,       NULL,       1 << 11,         False,          False,          -1 },
+    { "GVim",               NULL,       NULL,       1 << 1,         False,          False,          -1 },
+    { "jetbrains-webstorm",               NULL,       NULL,       1 << 1,         False,          False,          -1 },
+    { "jetbrains-studio",            NULL,       NULL,       1 << 2,         False,          False,          -1 },
+    { "Zathura",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
+    { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
+    { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
+    { "Chromium",             NULL,       "Chrome",   1 << 7,         False,          False,          -1 },
+    { "Qterm",              NULL,       NULL,       1 << 7,         False,          False,          -1 },
+    { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
+    { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
+    { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
+    { "VirtualBox",         NULL,      "VirtualBox",1 << 9,         False,          False,          -1 },
+    { "VLC",                NULL,       NULL,       1 << 10,         False,          False,          -1 },
 };
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenu[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
-static const char *chrom[] = { "chromium", "--incognito", "Chrome" };
+static const char *chrom[] = { "chromium", "--incognito", NULL };
 static const char *chat[] = { "skype", NULL, "Skype" };
 static const char *term[] = { "urxvtc", NULL };
 //static const char *edit[] = { "geany", NULL, "Geany" };
@@ -113,14 +113,14 @@ static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volu[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *vold[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *vbox[] = { "virtualbox",  NULL, "VirtualBox" };
-static const char *studio[] = { "studio.sh",  NULL, "Android" };
-static const char *wstorm[] = { "webstorm.sh",  NULL, "WebStorm" };
+static const char *studio[] = { "sh", "-c", "/usr/local/android-studio/bin/studio.sh" };
+static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
     { MONKEY,           XK_p,       spawn,          {.v = dmenu } },
-    { MONKEY,           XK_a,       spawn,          {.v = studio } },
-    { MONKEY,           XK_w,       spawn,          {.v = wstorm } },
+    { MONKEY,           XK_a,       runorraise,          {.v = studio } },
+    { MONKEY,           XK_w,       runorraise,          {.v = wstorm } },
     { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  runorraise,     {.v = term } },
