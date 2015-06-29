@@ -84,7 +84,7 @@ static const Rule rules[] = {
     { "Zathura",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
-    { "Chromium",             NULL,       "Chrome",   1 << 7,         False,          False,          -1 },
+    { "Chromium",             NULL,       NULL,   1 << 7,         False,          False,          -1 },
     { "Qterm",              NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
@@ -96,10 +96,9 @@ static const Rule rules[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenu[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
-static const char *chrom[] = { "chromium", "--incognito", NULL };
+static const char *chrom[] = { "chromium", "--incognito", "Chromium" };
 static const char *chat[] = { "skype", NULL, "Skype" };
-static const char *term[] = { "urxvtc", NULL };
-//static const char *edit[] = { "geany", NULL, "Geany" };
+static const char *term[] = { "urxvtc", NULL, "URXVTC" };
 static const char *mail[] = { "urxvtc", "-title", "mutt", "-e", "mutt", NULL };
 static const char *edit[] = { "gvim", NULL, "GVim" };
 static const char *vlc[] = { "vlc", NULL, "VLC" };
@@ -113,8 +112,8 @@ static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volu[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *vold[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *vbox[] = { "virtualbox",  NULL, "VirtualBox" };
-static const char *studio[] = { "sh", "-c", "/usr/local/android-studio/bin/studio.sh" };
-static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh" };
+static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, "jetbrains-studio" };
+static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, "jetbrains-webstorm" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
@@ -124,7 +123,7 @@ static Key keys[] = {
     { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  runorraise,     {.v = term } },
-    { MONKEY,           XK_Return,  runorraise,     {.v = term } },
+    { MONKEY,           XK_Return,  spawn,     {.v = term } },
     { MONKEY,           XK_e,       runorraise,     {.v = edit } },
     { MONKEY,           XK_v,       runorraise,     {.v = vlc } },
     { MONKEY,           XK_f,       runorraise,     {.v = pcfm } },
