@@ -60,13 +60,13 @@ static const Layout layouts[] = {
 static const Tag tags[] = {
     /* name     layout          mfact   nmaster */
     { "main",   &layouts[2],    -1,     -1 },
-    { "dev",   &layouts[0],    -1,     -1 },
-    { "droid",   &layouts[0],    -1,     -1 },
+    { "dev",    &layouts[0],    -1,     -1 },
+    { "droid",  &layouts[0],    -1,     -1 },
     { "doc",    &layouts[0],    -1,     -1 },
     { "chat",   &layouts[0],    -1,     -1 },
     { "mail",   &layouts[2],    -1,     -1 },
     { "file",   &layouts[0],    -1,     -1 },
-    { "fterm",   &layouts[1],    -1,     -1 },
+    { "fterm",  &layouts[1],    -1,     -1 },
     { "web",    &layouts[1],    -1,     -1 },
     { "vbox",   &layouts[0],    -1,     -1 },
     { "media",  &layouts[0],    -1,     -1 },
@@ -79,56 +79,60 @@ static const Rule rules[] = {
      */
     /* class                instance    title       tags mask       isfloating      iscentred       monitor */
     { "GVim",               NULL,       NULL,       1 << 1,         False,          False,          -1 },
-    { "jetbrains-webstorm",               NULL,       NULL,       1 << 1,         False,          False,          -1 },
-    { "jetbrains-studio",            NULL,       NULL,       1 << 2,         False,          False,          -1 },
+    { "jetbrains-webstorm", NULL,       NULL,       1 << 1,         False,          False,          -1 },
+    { "jetbrains-studio",   NULL,       NULL,       1 << 2,         False,          False,          -1 },
     { "Zathura",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
-    { "Chromium",             NULL,       NULL,   1 << 7,         False,          False,          -1 },
-    { "Qterm",              NULL,       NULL,       1 << 7,         False,          False,          -1 },
+    { "Chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
+    { "fqterm",             NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
-    { "VirtualBox",         NULL,      "VirtualBox",1 << 9,         False,          False,          -1 },
-    { "VLC",                NULL,       NULL,       1 << 10,         False,          False,          -1 },
+    { "VirtualBox",         NULL,       NULL,       1 << 9,         False,          False,          -1 },
+    { "VLC",                NULL,       NULL,       1 << 10,        False,          False,          -1 },
 };
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenu[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
-static const char *chrom[] = { "chromium", "--incognito", "Chromium" };
-static const char *chat[] = { "skype", NULL, "Skype" };
-static const char *term[] = { "urxvtc", NULL, "URXVTC" };
-static const char *mail[] = { "urxvtc", "-title", "mutt", "-e", "mutt", NULL };
-static const char *edit[] = { "gvim", NULL, "GVim" };
-static const char *vlc[] = { "vlc", NULL, "VLC" };
-static const char *pcfm[] = { "pcmanfm", NULL, "Pcmanfm" };
-static const char *prts[] = { "scrot", NULL };
-static const char *play[] = { "ncmpcpp", "toggle" };
-static const char *stop[] = { "ncmpcpp", "stop" };
-static const char *prev[] = { "ncmpcpp", "prev" };
-static const char *next[] = { "ncmpcpp", "next" };
-static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volu[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *vold[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *vbox[] = { "virtualbox",  NULL, "VirtualBox" };
+static const char *dmenu[]  = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
+static const char *chrom[]  = { "chromium", "--incognito", "Chromium" };
+static const char *chat[]   = { "skype", NULL, "Skype" };
+static const char *term[]   = { "urxvtc", NULL, "URXVTC" };
+static const char *mail[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", NULL };
+static const char *edit[]   = { "gvim", NULL, "GVim" };
+static const char *vlc[]    = { "vlc", NULL, "VLC" };
+static const char *pdf[]    = { "zathura", NULL, "Zathura" };
+static const char *pcfm[]   = { "pcmanfm", NULL, "Pcmanfm" };
+static const char *prts[]   = { "scrot", NULL };
+static const char *play[]   = { "ncmpcpp", "toggle" };
+static const char *stop[]   = { "ncmpcpp", "stop" };
+static const char *prev[]   = { "ncmpcpp", "prev" };
+static const char *next[]   = { "ncmpcpp", "next" };
+static const char *mute[]   = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volu[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *vold[]   = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *vbox[]   = { "virtualbox",  NULL, "VirtualBox" };
+static const char *fq[]     = { "fqterm",  NULL, "fqterm" };
 static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, "jetbrains-studio" };
 static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, "jetbrains-webstorm" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
     { MONKEY,           XK_p,       spawn,          {.v = dmenu } },
-    { MONKEY,           XK_a,       runorraise,          {.v = studio } },
-    { MONKEY,           XK_w,       runorraise,          {.v = wstorm } },
+    { MONKEY,           XK_d,       runorraise,     {.v = pdf } },
+    { MONKEY,           XK_a,       runorraise,     {.v = studio } },
+    { MONKEY,           XK_w,       runorraise,     {.v = wstorm } },
     { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  runorraise,     {.v = term } },
-    { MONKEY,           XK_Return,  spawn,     {.v = term } },
+    { MONKEY,           XK_Return,  spawn,          {.v = term } },
     { MONKEY,           XK_e,       runorraise,     {.v = edit } },
     { MONKEY,           XK_v,       runorraise,     {.v = vlc } },
     { MONKEY,           XK_f,       runorraise,     {.v = pcfm } },
     { MONKEY,           XK_m,       runorraise,     {.v = mail } },
     { MONKEY,           XK_b,       runorraise,     {.v = vbox } },
+    { MONKEY,           XK_q,       runorraise,     {.v = fq } },
     { MONKEY,           XK_Print,   spawn,          {.v = prts } },
     { MONKEY,           XK_F5,      spawn,          {.v = play } },
     { MONKEY,           XK_F6,      spawn,          {.v = stop } },
