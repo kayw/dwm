@@ -2552,8 +2552,7 @@ bstack(Monitor *m) {
 
 void
 runorraise(const Arg *arg) {                                                      
-     char **app = ((char **)arg->v);
-     /*char *app = ((char **)arg->v)[4];*/
+     char *app = ((char **)arg->v)[5];
      Arg a = { .ui = ~0 };                                                   
      Monitor *mon;                                               
      Client *c;                  
@@ -2561,7 +2560,7 @@ runorraise(const Arg *arg) {
      for (mon = mons; mon; mon = mon->next) {                               
        for (c = mon->clients; c; c = c->next) {                                
          XGetClassHint(dpy, c->win, &hint);                                
-         if (hint.res_class && strcmp(app[2], hint.res_class) == 0) {                  
+         if (hint.res_class && strcmp(app, hint.res_class) == 0) {                  
            a.ui = c->tags;                  
            view(&a);                    
            focus(c);                               

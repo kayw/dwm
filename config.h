@@ -96,14 +96,14 @@ static const Rule rules[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenu[]  = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[9][ColFG], NULL };
-static const char *chrom[]  = { "chromium", "--incognito", "Chromium" };
-static const char *chat[]   = { "skype", NULL, "Skype" };
-static const char *term[]   = { "urxvtc", NULL, "URXVTC" };
-static const char *mail[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", NULL };
-static const char *edit[]   = { "gvim", NULL, "GVim" };
-static const char *vlc[]    = { "vlc", NULL, "VLC" };
-static const char *pdf[]    = { "zathura", NULL, "Zathura" };
-static const char *pcfm[]   = { "pcmanfm", NULL, "Pcmanfm" };
+static const char *chrom[]  = { "chromium", "--incognito", NULL, NULL, NULL, "Chromium" };
+static const char *chat[]   = { "skype", NULL, NULL, NULL, NULL, "Skype" };
+static const char *term[]   = { "urxvtc", NULL, NULL, NULL, NULL,"URXVTC" };
+static const char *mail[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", "Mutt" };
+static const char *edit[]   = { "gvim", NULL, NULL, NULL, NULL, "GVim" };
+static const char *vlc[]    = { "vlc", NULL, NULL, NULL, NULL, "VLC" };
+static const char *pdf[]    = { "zathura", NULL, NULL, NULL, NULL,"Zathura" };
+static const char *pcfm[]   = { "pcmanfm", NULL, NULL, NULL, NULL, "Pcmanfm" };
 static const char *prts[]   = { "scrot", NULL };
 static const char *play[]   = { "ncmpcpp", "toggle" };
 static const char *stop[]   = { "ncmpcpp", "stop" };
@@ -112,10 +112,10 @@ static const char *next[]   = { "ncmpcpp", "next" };
 static const char *mute[]   = { "amixer", "-q", "set", "Master", "toggle", NULL };
 static const char *volu[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *vold[]   = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
-static const char *vbox[]   = { "virtualbox",  NULL, "VirtualBox" };
-static const char *fq[]     = { "fqterm",  NULL, "fqterm" };
-static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, "jetbrains-studio" };
-static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, "jetbrains-webstorm" };
+static const char *vbox[]   = { "virtualbox",  NULL, NULL, NULL, NULL, "VirtualBox" };
+static const char *fq[]     = { "fqterm",  NULL, NULL, NULL, NULL, "fqterm" };
+static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, NULL, NULL, NULL, "jetbrains-studio" };
+static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, NULL, NULL, NULL, "jetbrains-webstorm" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
