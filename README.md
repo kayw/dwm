@@ -4,7 +4,7 @@ kayw's DWM fork
 Source
 -----------
 Taken from [frank604](https://github.com/frank604/dwm), [KieranQuinn](https://github.com/KieranQuinn/dwm)
-Merge with dwm master except the drw impl(WIP)
+Merge with dwm master except the drw impl(__WIP__)
 
 Requirements
 ------------
