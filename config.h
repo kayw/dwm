@@ -114,7 +114,7 @@ static const char *mute[]   = { "amixer", "-q", "set", "Master", "toggle", NULL 
 static const char *volu[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *vold[]   = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 static const char *vbox[]   = { "virtualbox",  NULL, NULL, NULL, NULL, "VirtualBox" };
-static const char *fq[]     = { "fqterm",  NULL, NULL, NULL, NULL, "fqterm" };
+static const char *fq[]     = { "fqterm", NULL, NULL, NULL, NULL, "fqterm.bin" };
 static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, NULL, NULL, NULL, "jetbrains-studio" };
 static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, NULL, NULL, NULL, "jetbrains-webstorm" };
 
