@@ -80,6 +80,7 @@ static const Rule rules[] = {
     /* class                instance    title       tags mask       isfloating      iscentred       monitor */
     { "GVim",               NULL,       NULL,       1 << 1,         False,          False,          -1 },
     { "jetbrains-webstorm", NULL,       NULL,       1 << 1,         False,          False,          -1 },
+    { "Brackets",           NULL,       NULL,       1 << 1,         False,          False,          -1 },
     { "jetbrains-studio",   NULL,       NULL,       1 << 2,         False,          False,          -1 },
     { "Zathura",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
@@ -100,9 +101,9 @@ static const char *chrom[]  = { "chromium", "--incognito", NULL, NULL, NULL, "Ch
 static const char *chat[]   = { "skype", NULL, NULL, NULL, NULL, "Skype" };
 static const char *urxvtd[] = { "urxvtd", NULL };
 static const char *term[]   = { "urxvtc", NULL, NULL, NULL, NULL,"URXVTC" };
-static const char *mail[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", "Mutt" };
-static const char *edit[]   = { "gvim", NULL, NULL, NULL, NULL, "GVim" };
-static const char *vlc[]    = { "vlc", NULL, NULL, NULL, NULL, "VLC" };
+static const char *email[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", "Mutt" };
+/*static const char *edit[]   = { "gvim", NULL, NULL, NULL, NULL, "GVim" };
+static const char *vlc[]    = { "vlc", NULL, NULL, NULL, NULL, "VLC" };*/
 static const char *pdf[]    = { "zathura", NULL, NULL, NULL, NULL,"Zathura" };
 static const char *pcfm[]   = { "pcmanfm", NULL, NULL, NULL, NULL, "Pcmanfm" };
 static const char *prts[]   = { "scrot", NULL };
@@ -117,6 +118,7 @@ static const char *vbox[]   = { "virtualbox",  NULL, NULL, NULL, NULL, "VirtualB
 static const char *fq[]     = { "fqterm", NULL, NULL, NULL, NULL, "fqterm.bin" };
 static const char *studio[] = { "/usr/local/android-studio/bin/studio.sh", NULL, NULL, NULL, NULL, "jetbrains-studio" };
 static const char *wstorm[] = { "/opt/webstorm/bin/webstorm.sh", NULL, NULL, NULL, NULL, "jetbrains-webstorm" };
+static const char *brackets[] = { "/usr/local/brackets/brackets", NULL, NULL, NULL, NULL, "Brackets" };
 
 static Key keys[] = {
     /* modifier         key         function        argument */
@@ -124,15 +126,15 @@ static Key keys[] = {
     { MONKEY,           XK_d,       runorraise,     {.v = pdf } },
     { MONKEY,           XK_a,       runorraise,     {.v = studio } },
     { MONKEY,           XK_w,       runorraise,     {.v = wstorm } },
+    { MONKEY,           XK_b,       runorraise,     {.v = brackets } },
     { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  spawn,          {.v = urxvtd } },
     { MONKEY,           XK_Return,  spawn,          {.v = term } },
-    { MONKEY,           XK_e,       runorraise,     {.v = edit } },
-    { MONKEY,           XK_v,       runorraise,     {.v = vlc } },
+    /*{ MONKEY,           XK_v,       runorraise,     {.v = vlc } },*/
     { MONKEY,           XK_f,       runorraise,     {.v = pcfm } },
-    { MONKEY,           XK_m,       runorraise,     {.v = mail } },
-    { MONKEY,           XK_b,       runorraise,     {.v = vbox } },
+    { MONKEY,           XK_e,       runorraise,     {.v = email } },
+    { MONKEY,           XK_v,       runorraise,     {.v = vbox } },
     { MONKEY,           XK_q,       runorraise,     {.v = fq } },
     { MONKEY,           XK_Print,   spawn,          {.v = prts } },
     { MONKEY,           XK_F5,      spawn,          {.v = play } },
