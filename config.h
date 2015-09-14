@@ -66,10 +66,10 @@ static const Tag tags[] = {
     { "chat",   &layouts[0],    -1,     -1 },
     { "mail",   &layouts[2],    -1,     -1 },
     { "file",   &layouts[0],    -1,     -1 },
-    { "fterm",  &layouts[1],    -1,     -1 },
+    { "media",  &layouts[1],    -1,     -1 },
     { "web",    &layouts[1],    -1,     -1 },
     { "vbox",   &layouts[0],    -1,     -1 },
-    { "media",  &layouts[0],    -1,     -1 },
+    { "fterm",  &layouts[0],    -1,     -1 },
 };
 
 static const Rule rules[] = {
@@ -86,12 +86,12 @@ static const Rule rules[] = {
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
     { "Chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
-    { "fqterm.bin",         NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
     { "VirtualBox",         NULL,       NULL,       1 << 9,         False,          False,          -1 },
     { "VLC",                NULL,       NULL,       1 << 10,        False,          False,          -1 },
+    { "Fqterm.bin",         NULL,       NULL,       1 << 10,        False,          False,          -1 },
 };
 
 /* commands */
