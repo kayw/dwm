@@ -82,7 +82,7 @@ static const Rule rules[] = {
     { "jetbrains-webstorm", NULL,       NULL,       1 << 1,         False,          False,          -1 },
     { "Brackets",           NULL,       NULL,       1 << 1,         False,          False,          -1 },
     { "jetbrains-studio",   NULL,       NULL,       1 << 2,         False,          False,          -1 },
-    { "Zathura",            NULL,       NULL,       1 << 3,         False,          False,          -1 },
+    { "tabbed-zathura",     NULL,       NULL,       1 << 3,         False,          False,          -1 },
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
     { "chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
@@ -104,7 +104,7 @@ static const char *term[]   = { "urxvtc", NULL, NULL, NULL, NULL,"URXVTC" };
 static const char *email[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", "Mutt" };
 /*static const char *edit[]   = { "gvim", NULL, NULL, NULL, NULL, "GVim" };
 static const char *vlc[]    = { "vlc", NULL, NULL, NULL, NULL, "VLC" };*/
-static const char *pdf[]    = { "zathuratab", NULL, NULL, NULL, NULL,"Zathura" };
+static const char *pdf[]    = { "/home/kayw/bin/zathuratab", NULL, NULL, NULL, NULL,"Zathura" };
 static const char *pcfm[]   = { "pcmanfm", NULL, NULL, NULL, NULL, "Pcmanfm" };
 static const char *prts[]   = { "scrot", NULL };
 static const char *play[]   = { "ncmpcpp", "toggle" };
@@ -123,7 +123,7 @@ static const char *brackets[] = { "/usr/local/brackets/brackets", NULL, NULL, NU
 static Key keys[] = {
     /* modifier         key         function        argument */
     { MONKEY,           XK_p,       spawn,          {.v = dmenu } },
-    { MONKEY,           XK_d,       runorraise,     {.v = pdf } },
+    { MONKEY,           XK_z,       runorraise,     {.v = pdf } },
     { MONKEY,           XK_a,       runorraise,     {.v = studio } },
     { MONKEY,           XK_w,       runorraise,     {.v = wstorm } },
     { MONKEY,           XK_b,       runorraise,     {.v = brackets } },
