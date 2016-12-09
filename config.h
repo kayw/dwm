@@ -85,7 +85,7 @@ static const Rule rules[] = {
     { "tabbed-zathura",     NULL,       NULL,       1 << 3,         False,          False,          -1 },
     { "Skype",              NULL,       NULL,       1 << 4,         False,          False,          -1 },
     { "Mutt",               NULL,       "Mutt",     1 << 5,         False,          False,          -1 },
-    { "chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
+    { "Chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
