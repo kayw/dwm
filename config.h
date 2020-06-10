@@ -88,7 +88,7 @@ static const Rule rules[] = {
     { "Chromium",           NULL,       NULL,       1 << 7,         False,          False,          -1 },
     { "Feh",                NULL,       NULL,       1 << 6,         False,          False,          -1 },
     { "Pcmanfm",            NULL,       NULL,       1 << 6,         False,          False,          -1 },
-    { "Firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
+    { "firefox",            NULL,       NULL,       1 << 8,         False,          False,          -1 },
     { "VirtualBox",         NULL,       NULL,       1 << 9,         False,          False,          -1 },
     { "VLC",                NULL,       NULL,       1 << 10,        False,          False,          -1 },
     { "Fqterm.bin",         NULL,       NULL,       1 << 10,        False,          False,          -1 },
@@ -101,6 +101,7 @@ static const char *chrom[]  = { "chromium", "--incognito", NULL, NULL, NULL, "Ch
 static const char *chat[]   = { "skype", NULL, NULL, NULL, NULL, "Skype" };
 static const char *urxvtd[] = { "urxvtd", NULL };
 static const char *term[]   = { "urxvtc", NULL, NULL, NULL, NULL,"URXVTC" };
+static const char *aterm[]   = { "alacritty", NULL, NULL, NULL, NULL,"ALacritty" };
 static const char *email[]   = { "urxvtc", "-title", "mutt", "-e", "mutt", "Mutt" };
 /*static const char *edit[]   = { "gvim", NULL, NULL, NULL, NULL, "GVim" };
 static const char *vlc[]    = { "vlc", NULL, NULL, NULL, NULL, "VLC" };*/
@@ -130,7 +131,8 @@ static Key keys[] = {
     { MONKEY,           XK_c,       runorraise,     {.v = chrom } },
     { MONKEY,           XK_s,       runorraise,     {.v = chat } },
     { MODKEY|ShiftMask, XK_Return,  spawn,          {.v = urxvtd } },
-    { MONKEY,           XK_Return,  spawn,          {.v = term } },
+    { MONKEY,           XK_Return,  spawn,          {.v = aterm } },
+    { MONKEY|ControlMask,           XK_Return,      spawn,          {.v = term } },
     /*{ MONKEY,           XK_v,       runorraise,     {.v = vlc } },*/
     { MONKEY,           XK_f,       runorraise,     {.v = pcfm } },
     { MONKEY,           XK_e,       runorraise,     {.v = email } },
